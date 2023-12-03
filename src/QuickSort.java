@@ -1,13 +1,16 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class QuickSort {
 
     public static void main(String[] args) {
-        Random rand = new Random();
-        int[] numbers = new int[10];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(100);
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter list of numbers to sort (separated by commas):");
+        String numbersString = userInput.nextLine();
+        String[] numbersStringArr = numbersString.split(",");
+        int[] numbers = new int[numbersStringArr.length];
+        for(int i = 0; i < numbersStringArr.length; i++) {
+            numbers[i] = Integer.parseInt(numbersStringArr[i].trim());
         }
 
         System.out.println("Before:");
@@ -73,8 +76,8 @@ public class QuickSort {
     }
 
     private static void printArray(int[] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + ",");
+        for (int number : numbers) {
+            System.out.print(number + ",");
         }
     }
 }
