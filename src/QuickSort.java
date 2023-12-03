@@ -6,9 +6,13 @@ public class QuickSort {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Enter list of numbers to sort (separated by commas):");
+        // Allowing the user to input the numbers in one go
         String numbersString = userInput.nextLine();
+        // Creating an array of Strings, filling it in with Strings, and separating each string by commas
         String[] numbersStringArr = numbersString.split(",");
+        // Creating a new array of integers of the size of the previous array
         int[] numbers = new int[numbersStringArr.length];
+        // Iterating through the array
         for(int i = 0; i < numbersStringArr.length; i++) {
             numbers[i] = Integer.parseInt(numbersStringArr[i].trim());
         }

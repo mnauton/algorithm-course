@@ -1,13 +1,20 @@
 import java.util.Arrays;
-import java.util.Random;
+import java.util.Scanner;
 
 public class SelectionSort {
     public static void main(String[] args) {
 
-        int[] numbers = new int[10];
-        Random random = new Random();
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = random.nextInt(1000);
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter list of numbers to sort (separated by commas):");
+        // Allowing the user to input the numbers in one go
+        String numbersString = userInput.nextLine();
+        // Creating an array of Strings, filling it in with Strings, and separating each string by commas
+        String[] numbersStringArr = numbersString.split(",");
+        // Creating a new array of integers of the size of the previous array
+        int[] numbers = new int[numbersStringArr.length];
+        // Iterating through the array
+        for(int i = 0; i < numbersStringArr.length; i++) {
+            numbers[i] = Integer.parseInt(numbersStringArr[i].trim());
         }
 
         System.out.println(Arrays.toString(numbers));
