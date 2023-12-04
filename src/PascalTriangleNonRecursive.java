@@ -1,3 +1,5 @@
+import javax.swing.text.Style;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -6,8 +8,7 @@ public class PascalTriangleNonRecursive {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Enter N (number of rows of Pascal Triangle):");
         int n = userInput.nextInt();
-        int[][] triangle = getPascalTriangle(n);
-        System.out.println(getPascalTriangleRepresentation(triangle));
+        getPascalTriangle(n);
     }
 
     private static int[][] getPascalTriangle(int n) {
@@ -22,9 +23,21 @@ public class PascalTriangleNonRecursive {
             if (i==0){
                 // Edge case: the first row needs an array of just one element of value 1
                 triangle[i][0] = 1;
+                // Creating an array of tab characters to prepend to the row's values to create visual triangle
+                char[] tabs = new char[n-1];
+                // Filling the array
+                Arrays.fill(tabs, '\t');
+                // Before printing the row's elements I print the needed tabs to form the triangle
+                System.out.println(new String(tabs) + triangle[0][0]);
             } else {
                 int[] previousRow = triangle[i-1];
                 int[] thisRow = triangle[i];
+                char[] tabs = new char[n-1-i];
+                // Filling the array
+                Arrays.fill(tabs, '\t');
+                // Before printing the row's elements I print the needed tabs to form the triangle
+                System.out.print(new String(tabs));
+                // next I calculate the row's elements
                 for (int j = 0; j < rowSize; j++){
                     if (j == 0 || j == rowSize-1) {
                     // Edge case: the first and last element of each row contain a 1
@@ -35,34 +48,13 @@ public class PascalTriangleNonRecursive {
                         the element from the previous column + the element from the same column */
                         thisRow[j] = previousRow[j-1] + previousRow[j];
                     }
+                    // I print the given element
+                    System.out.print(thisRow[j] + "\t\t");
                 }
+                // After printing the row I print a linebreak
+                System.out.println();
             }
         }
         return triangle;
-    }
-
-    // Method that returns a String representation of the pascal triangle
-    private static String getPascalTriangleRepresentation(int[][] pascalTriangle){
-        String result = "";
-
-        // Looping through each row of the triangle
-        for (int i = 0; i < pascalTriangle.length; i++) {
-            String rowString = "";
-            // Creating an array of tab characters to prepend to the row's values to create visual triangle
-            char[] tabs = new char[pascalTriangle.length-1-i];
-            // Filling the array
-            Arrays.fill(tabs, '\t');
-            // Prepending to the row's elements
-            rowString += new String(tabs);
-
-            // Enhanced for to loop through the row's numbers adding the element to the string and 2 tabs
-            for (int digit : pascalTriangle[i]){
-               rowString += digit + "\t\t";
-            }
-            // Adding new line at the end of the row
-            result += rowString + "\n";
-        }
-
-        return result;
     }
 }
