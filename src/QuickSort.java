@@ -8,7 +8,8 @@ public class QuickSort {
         System.out.println("Enter list of numbers to sort (separated by commas):");
         // Allowing the user to input the numbers in one go
         String numbersString = userInput.nextLine();
-        // Creating an array of Strings, filling it in with Strings, and separating each string by commas
+        /* Creating an array of Strings, filling it in with Strings,
+        and separating each string by commas */
         String[] numbersStringArr = numbersString.split(",");
         // Creating a new array of integers of the size of the previous array
         int[] numbers = new int[numbersStringArr.length];
@@ -52,12 +53,14 @@ public class QuickSort {
 
         while (leftPointer < rightPointer) {
 
-            // We move on from the left until we find a number higher than the pivot, or hit the right pointer.
+            /* We move on from the left until we find a number higher than the pivot,
+            or hit the right pointer */
             while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
                 leftPointer++;
             }
 
-            // We move on from the right until we find a number lower than the pivot, or hit the left pointer.
+            /* We move on from the right until we find a number lower than the pivot,
+            or hit the left pointer */
             while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
                 rightPointer--;
             }

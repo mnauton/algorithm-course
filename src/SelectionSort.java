@@ -8,7 +8,8 @@ public class SelectionSort {
         System.out.println("Enter list of numbers to sort (separated by commas):");
         // Allowing the user to input the numbers in one go
         String numbersString = userInput.nextLine();
-        // Creating an array of Strings, filling it in with Strings, and separating each string by commas
+        /* Creating an array of Strings, filling it in with Strings,
+        and separating each string by commas */
         String[] numbersStringArr = numbersString.split(",");
         // Creating a new array of integers of the size of the previous array
         int[] numbers = new int[numbersStringArr.length];
@@ -17,8 +18,12 @@ public class SelectionSort {
             numbers[i] = Integer.parseInt(numbersStringArr[i].trim());
         }
 
+        System.out.println("Before:");
         System.out.println(Arrays.toString(numbers));
+
         selectionSort(numbers);
+
+        System.out.println("\nAfter:");
         System.out.println(Arrays.toString(numbers));
     }
 
